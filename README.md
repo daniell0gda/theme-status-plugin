@@ -1,6 +1,6 @@
 # theme-status-plugin
 
-checking if device is in dark theme
+plugin for CapacitorJs checking if device is in dark theme
 
 ## Install
 
