@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 import Capacitor
 
 /**
@@ -7,12 +8,17 @@ import Capacitor
  */
 @objc(ThemeStatusPlugin)
 public class ThemeStatusPlugin: CAPPlugin {
-    private let implementation = ThemeStatus()
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.resolve([
-            "value": implementation.echo(value)
-        ])
+    @objc func isDarkMode(_ call: CAPPluginCall) {
+        let currentWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
+        if currentWindow?.traitCollection.userInterfaceStyle == .dark {
+            call.success([
+                "value": true
+            ])
+        } else {
+            call.success([
+                "value": false
+            ])
+        }
     }
 }

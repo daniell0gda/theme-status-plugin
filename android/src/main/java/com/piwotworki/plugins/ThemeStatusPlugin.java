@@ -9,14 +9,30 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 @CapacitorPlugin(name = "ThemeStatus")
 public class ThemeStatusPlugin extends Plugin {
 
-    private ThemeStatus implementation = new ThemeStatus();
-
     @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
+    public void isDarkMode(PluginCall call) {
+        String value = "yes";
+
+        int nightModeFlags =
+                getContext().getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                value = "yes";
+                break;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                value = "no";
+                break;
+
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                value = "undefined";
+                break;
+        }
+
 
         JSObject ret = new JSObject();
-        ret.put("value", implementation.echo(value));
+        ret.put("value", value);
         call.resolve(ret);
     }
 }

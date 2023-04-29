@@ -1,10 +1,10 @@
-import { WebPlugin } from '@capacitor/core';
+import {WebPlugin} from '@capacitor/core';
 
-import type { ThemeStatusPlugin } from './definitions';
+import type {ThemeStatusPlugin} from './definitions';
 
 export class ThemeStatusWeb extends WebPlugin implements ThemeStatusPlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+
+  isDarkMode(options: { value: string }): Promise<{ value: string }> {
+    return Promise.resolve({value: options.value});
   }
 }

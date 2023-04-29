@@ -1,3 +1,3 @@
 export interface ThemeStatusPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  isDarkMode(options: { value: string }): Promise<{ value: string }>;
 }
