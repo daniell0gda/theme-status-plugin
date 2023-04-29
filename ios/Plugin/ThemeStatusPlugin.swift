@@ -2,29 +2,37 @@ import Foundation
 import UIKit
 import Capacitor
 
-/**
- * Please read the Capacitor iOS Plugin Development Guide
- * here: https://capacitorjs.com/docs/plugins/ios
- */
+import Foundation
+import UIKit
+import Capacitor
+
 @objc(ThemeStatusPlugin)
 public class ThemeStatusPlugin: CAPPlugin {
 
-   @objc public class PDTworkiThemeStatus: NSObject {
+    @objc public class ThemeStatus: NSObject {
 
-       @objc public static func currentTheme() -> String {
-           let currentWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
-           if let style = currentWindow?.traitCollection.userInterfaceStyle {
-               switch style {
-               case .light:
-                   return "false"
-               case .dark:
-                   return "true"
-               case .unspecified:
-                   return "undefined"
-               }
-           } else {
-               return "undefined"
-           }
-       }
-   }
+        @objc public static func isDarkMode(_ call: CAPPluginCall) {
+            let currentWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
+            if let style = currentWindow?.traitCollection.userInterfaceStyle {
+                switch style {
+                case .light:
+                    call.success([
+                        "value": false
+                    ])
+                case .dark:
+                    call.success([
+                        "value": true
+                    ])
+                case .unspecified:
+                    call.success([
+                        "value": "undefined"
+                    ])
+                }
+            } else {
+                call.success([
+                    "value": "undefined"
+                ])
+            }
+        }
+    }
 }
