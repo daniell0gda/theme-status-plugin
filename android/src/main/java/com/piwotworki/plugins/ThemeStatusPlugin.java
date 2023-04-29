@@ -13,18 +13,18 @@ public class ThemeStatusPlugin extends Plugin {
 
     @PluginMethod
     public void isDarkMode(PluginCall call) {
-        String value = "yes";
+        String value = "undefined";
 
         int nightModeFlags =
                 getContext().getResources().getConfiguration().uiMode &
                         Configuration.UI_MODE_NIGHT_MASK;
         switch (nightModeFlags) {
             case Configuration.UI_MODE_NIGHT_YES:
-                value = "yes";
+                value = "true";
                 break;
 
             case Configuration.UI_MODE_NIGHT_NO:
-                value = "no";
+                value = "false";
                 break;
 
             case Configuration.UI_MODE_NIGHT_UNDEFINED:

@@ -9,16 +9,22 @@ import Capacitor
 @objc(ThemeStatusPlugin)
 public class ThemeStatusPlugin: CAPPlugin {
 
-    @objc func isDarkMode(_ call: CAPPluginCall) {
-        let currentWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
-        if currentWindow?.traitCollection.userInterfaceStyle == .dark {
-            call.success([
-                "value": true
-            ])
-        } else {
-            call.success([
-                "value": false
-            ])
-        }
-    }
+   @objc public class PDTworkiThemeStatus: NSObject {
+
+       @objc public static func currentTheme() -> String {
+           let currentWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
+           if let style = currentWindow?.traitCollection.userInterfaceStyle {
+               switch style {
+               case .light:
+                   return "false"
+               case .dark:
+                   return "true"
+               case .unspecified:
+                   return "undefined"
+               }
+           } else {
+               return "undefined"
+           }
+       }
+   }
 }
