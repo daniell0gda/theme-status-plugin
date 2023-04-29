@@ -2,37 +2,30 @@ import Foundation
 import UIKit
 import Capacitor
 
-import Foundation
-import UIKit
-import Capacitor
-
 @objc(ThemeStatusPlugin)
 public class ThemeStatusPlugin: CAPPlugin {
 
-    @objc public class ThemeStatus: NSObject {
-
-        @objc public static func isDarkMode(_ call: CAPPluginCall) {
-            let currentWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
-            if let style = currentWindow?.traitCollection.userInterfaceStyle {
-                switch style {
-                case .light:
-                    call.success([
-                        "value": false
-                    ])
-                case .dark:
-                    call.success([
-                        "value": true
-                    ])
-                case .unspecified:
-                    call.success([
-                        "value": "undefined"
-                    ])
-                }
-            } else {
-                call.success([
+    @objc func isDarkMode(_ call: CAPPluginCall) {
+        let currentWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
+        if let style = currentWindow?.traitCollection.userInterfaceStyle {
+            switch style {
+            case .light:
+                call.resolve([
+                    "value": false
+                ])
+            case .dark:
+                call.resolve([
+                    "value": true
+                ])
+            case .unspecified:
+                call.resolve([
                     "value": "undefined"
                 ])
             }
+        } else {
+            call.resolve([
+                "value": "undefined"
+            ])
         }
     }
 }
