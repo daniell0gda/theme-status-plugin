@@ -1,5 +1,7 @@
 package com.piwotworki.plugins;
 
+import android.content.res.Configuration;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
