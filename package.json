@@ -1,6 +1,6 @@
 {
   "name": "theme-status-plugin",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "checking if device is in dark theme",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
