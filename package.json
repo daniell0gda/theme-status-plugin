@@ -1,6 +1,6 @@
 {
   "name": "theme-status-plugin",
-  "version": "1.0.2",
+  "version": "2.0.1",
   "description": "checking if device is in dark theme",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -47,9 +47,9 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^5.0.5",
-    "@capacitor/core": "^5.0.5",
-    "@capacitor/ios": "^5.0.5",
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/ios": "^5.0.0",
     "@capacitor/docgen": "^0.2.1",
     "@ionic/eslint-config": "^0.3.0",
     "@ionic/prettier-config": "^1.0.1",
@@ -63,7 +63,7 @@
     "typescript": "~4.1.5"
   },
   "peerDependencies": {
-    "@capacitor/core": "^5.0.5"
+    "@capacitor/core": "^5.0.0"
   },
   "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
